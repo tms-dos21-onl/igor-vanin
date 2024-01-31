@@ -67,6 +67,8 @@ rvlt135@rvlt135:~$ sudo lshw -class disk
        configuration: driver=virtio_blk guid=34928ed9-4b41-4f90-84b4-0250c72df3da logicalsectorsize=512 sectorsize=512
 ```
 6.
+7.
+rvlt135@rvlt135:~$ htop 
 
 8.
 ```
@@ -75,3 +77,38 @@ local ivanin ~ % ssh-copy-id rvlt135@ipserver
 rvlt135@server: ~$ sudo nano /etc/ssh/sshd_config
 change PasswordAuthentification
 ```
+
+9.
+rvlt135@rvlt135:~$ cat /proc/filesystems
+nodev	sysfs
+nodev	tmpfs
+nodev	bdev
+nodev	proc
+nodev	cgroup
+nodev	cgroup2
+nodev	cpuset
+nodev	devtmpfs
+nodev	configfs
+nodev	debugfs
+nodev	tracefs
+nodev	securityfs
+nodev	sockfs
+nodev	bpf
+nodev	pipefs
+nodev	ramfs
+nodev	hugetlbfs
+nodev	devpts
+	ext3
+	ext2
+	ext4
+	squashfs
+	vfat
+nodev	ecryptfs
+	fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	mqueue
+nodev	pstore
+	btrfs
+nodev	autofs
+nodev	binfmt_misc
