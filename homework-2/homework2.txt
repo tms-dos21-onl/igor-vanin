@@ -64,3 +64,4 @@ $ sudo systemctl restart ntp
 в моменте система нагружается или нагрузка происходит за отрезок времени
 
 7.  chmod -x $(which chmod) - убирает правда на выполнение x утилиты chmod
+Возвращаем права с помощью утилиты busybox ivaninubuntu@ivanin:~$ sudo busybox chmod +x /bin/chmod
