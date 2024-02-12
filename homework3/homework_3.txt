@@ -1,0 +1,14 @@
+rvlt135@rvlt135:~/development/igor-vanin$ sudo snap install powershell --classic
+2024-02-12T22:17:33+03:00 INFO Waiting for automatic snapd restart...
+powershell 7.4.1 from Microsoft PowerShell✓ installed
+rvlt135@rvlt135:~/development/igor-vanin$ powershell
+PowerShell 7.4.1
+PS /home/rvlt135/development/igor-vanin> dir
+
+    Directory: /home/rvlt135/development/igor-vanin
+
+UnixMode         User Group         LastWriteTime         Size Name
+--------         ---- -----         -------------         ---- ----
+drwxrwxr-x    rvlt135 rvlt135    02/01/2024 00:11         4096 homework-1
+
+PS /home/rvlt135/development/igor-vanin> 
