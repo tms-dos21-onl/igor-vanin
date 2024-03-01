@@ -32,6 +32,7 @@
 > sudo ufw allow 23
 > rvlt135@rvlt135:~$ netstat -tulpn | grep LISTEN
 > tcp        0      0 0.0.0.0:23              0.0.0.0:*               LISTEN      -  
+
 Подключаемся по telnet и перехватываем траффик на другой машине:
 > rvlt135@rvlt135:~$ sudo tcpdump port telnet -l -A | grep -e "Password" -e "Login"
 > tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
