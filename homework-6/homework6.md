@@ -1,0 +1,24 @@
+1. Определить все IP адреса, маски подсетей и соответствующие MAC адреса Linux VM. Определите класс и адреса подсетей, в которых находится VM.
+
+> rvlt135@rvlt135:~$ ifconfig -a
+```
+ens3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 94.250.248.253  netmask 255.255.255.255  broadcast 94.250.248.253
+        inet6 fe80::5054:ff:fe15:322a  prefixlen 64  scopeid 0x20<link>
+        ether 52:54:00:15:32:2a  txqueuelen 1000  (Ethernet)
+        RX packets 564245  bytes 104607537 (104.6 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 480969  bytes 47409482 (47.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 7178  bytes 737665 (737.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 7178  bytes 737665 (737.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+класс сети - A, и адрес подсети - 94.250.248.253/32
