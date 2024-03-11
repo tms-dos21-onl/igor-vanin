@@ -149,7 +149,16 @@ HEAD is now at 4f2938b Update homework2.txt
 ```
 
 10. Переключиться на ветку main или master. Если ветка называется master, то переименовать её в main.
+```
+git checkout main
+```
 
 11. Скопировать файл https://github.com/tms-dos21-onl/_sandbox/blob/main/.github/workflows/validate-shell.yaml, положить его по такому же относительному пути в репозиторий. Создать коммит и запушить его в удаленный репозиторий.
+```
+rvlt135@rvlt135:~/development/igor-vanin/homework-8/.github/workflow$ curl  -ovalidate-shell.yaml https://raw.githubusercontent.com/tms-dos21-onl/_sandbox/main/.github/workflows/validate-shell.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    14  100    14    0     0    116      0 --:--:-- --:--:-- --:--:--   116
+```
 
 12. Создать из ветки main ветку develop. Переключиться на неё и создать README.md в корне репозитория. Написать в этом файле какие инструменты DevOps вам знакомы и с какими вы бы хотели познакомиться больше всего (2-3 пункта).
