@@ -73,6 +73,21 @@ Name:	ya.ru
 Address: 2a02:6b8::2:242
 
 ```
+Выполняем запрос c сохранением ответа в файл .html
+```
+rvlt135@rvlt135:~/development/igor-vanin/homework-6$ curl -LH "Host: ya.ru" -o ya-ru.html "http://77.88.55.242"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 13413  100 13413    0     0   216k      0 --:--:-- --:--:-- --:--:--  216k
+rvlt135@rvlt135:~/development/igor-vanin/homework-6$ ls -al
+total 36
+drwxrwxr-x 2 rvlt135 rvlt135  4096 Mar 11 23:21 .
+drwxrwxr-x 7 rvlt135 rvlt135  4096 Mar 11 23:17 ..
+-rw-rw-r-- 1 rvlt135 rvlt135 10238 Mar 11 23:21 homework6.md
+-rw-rw-r-- 1 rvlt135 rvlt135 13413 Mar 11 23:21 ya-ru.html
+```
+
 
 Столкнулся с несколькими проблемами 406 выполнения запроса: 
 ```
