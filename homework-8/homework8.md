@@ -162,3 +162,30 @@ rvlt135@rvlt135:~/development/igor-vanin/homework-8/.github/workflow$ curl  -ova
 ```
 
 12. Создать из ветки main ветку develop. Переключиться на неё и создать README.md в корне репозитория. Написать в этом файле какие инструменты DevOps вам знакомы и с какими вы бы хотели познакомиться больше всего (2-3 пункта).
+```
+rvlt135@rvlt135:~/development/igor-vanin$ git branch
+* develop
+  homework-2
+  homework-3
+  homework-4
+  homework-5
+  homework-6
+  homework-8
+  main
+rvlt135@rvlt135:~/development/igor-vanin$ nano README.md
+rvlt135@rvlt135:~/development/igor-vanin$ git commit -m "Add README.md"
+On branch develop
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+rvlt135@rvlt135:~/development/igor-vanin$ git add .
+rvlt135@rvlt135:~/development/igor-vanin$ git commit -m "Add README.md"
+[develop efc4099] Add README.md
+ Committer: rvlt135 <rvlt135@rvlt135.fvds.ru>
+ 1 file changed, 4 insertions(+)
+ create mode 100644 README.md
+rvlt135@rvlt135:~/development/igor-vanin$ git push origin develop
+
+```
