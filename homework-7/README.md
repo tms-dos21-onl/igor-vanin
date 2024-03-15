@@ -72,3 +72,5 @@ baseURL: "http://123.123.123.123:8080/api"
 ```
 npm start
 ```
+Приложение успешно работает на удаленном сервере и обрабатывает запросы.
+<img width="941" alt="image" src="https://github.com/tms-dos21-onl/igor-vanin/assets/41593525/7996109e-136b-4d2a-8103-b6cef911d11b">
