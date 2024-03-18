@@ -150,7 +150,9 @@ drwxr-xr-x 13 501 staff 4096 Mar 19 01:26 ..
 ```
 17. С помощью утилиты htop определить какой процесс потребляет больше всего ресурсов в системе.
 Более потребляемый ресурс, можно отсортировать по MEM или CPU
-18. Вывести логи сервиса Firewall с помощью journalctl не прибегая к фильтрации с помощью grep
+![telegram-cloud-photo-size-2-5458779815923538370-y](https://github.com/tms-dos21-onl/igor-vanin/assets/41593525/723e2d3f-599d-4622-a4bf-961d939d222c)
+
+19. Вывести логи сервиса Firewall с помощью journalctl не прибегая к фильтрации с помощью grep
 ```
 rvlt135@rvlt135:/etc/systemd$ sudo ufw enable
 [sudo] password for rvlt135: 
