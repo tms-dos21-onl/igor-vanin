@@ -72,3 +72,31 @@ baseURL: "http://123.123.123.123:8080/api"
 ```
 npm start
 ```
+
+3. Установить веб-приложение (backend + frontend) на Linux VM и настроить запуск через SystemD
+```
+rvlt135@rvlt135:~/development/igor-vanin/homework-7$ cat /etc/systemd/system/frontback.service 
+[Unit]
+Description=Service python and node
+After=network.target
+
+[Service]
+User=rvlt135
+Type=forking
+ExecStart=/home/rvlt135/development/igor-vanin/homework-7/start-web-api.sh
+
+[Install]
+```
+
+```
+rvlt135@rvlt135:~/development/igor-vanin/homework-7$ cat start-web-api.sh 
+#!/bin/bash
+source "$HOME/development/igor-vanin/homework-7/django_venv/bin/activate"
+API_WORK_DIR="$HOME/development/igor-vanin/homework-7/django-rest-api/DjangoRestApi"
+FRONT_WORK_DIR="$HOME/development/igor-vanin/homework-7/react-crud-web-api"
+
+cd "$API_WORK_DIR"
+python manage.py runserver 8080 &
+cd "$FRONT_WORK_DIR"
+npm start &
+```
