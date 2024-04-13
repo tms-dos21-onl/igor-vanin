@@ -189,3 +189,148 @@ rvlt135@rvlt135:~/development/igor-vanin$ git commit -m "Add README.md"
 rvlt135@rvlt135:~/development/igor-vanin$ git push origin develop
 
 ```
+
+13. Создать из ветки main ветку support и создать там файл LICENSE в корне репозитория с содержимым https://www.apache.org/licenses/LICENSE-2.0.txt. Создать коммит. Вывести последние 3 коммитa.
+git checkout -b support
+curl -o LICENSE.md https://www.apache.org/licenses/LICENSE-2.0.txt
+git log --max-count=3
+
+```
+rvlt135@rvlt135:~/development/igor-vanin$ git log --max-count=3
+commit daaafaa067037b44d34519b70be8324b94c96c3e (HEAD -> support)
+Author: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Date:   Tue Mar 12 00:24:19 2024 +0300
+
+    add LICENSE.md
+
+commit 55634cd3cd963d0bde7de68821267e7bab86b63d (origin/homework-8, homework-8)
+Author: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Date:   Tue Mar 12 00:17:46 2024 +0300
+
+    change homework8
+
+commit 9b5f5e221cdc45349c98e934dc7afad84a722d0b
+Merge: ab04850 cbc6165
+Author: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Date:   Tue Mar 12 00:08:11 2024 +0300
+
+    add homework8
+```
+
+14. Переключиться обратно на ветку main и создать там файл LICENSE в корне репозитория с содержимым https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt. Создать коммит. Вывести последние 3 коммитa.
+
+```
+rvlt135@rvlt135:~/development/igor-vanin$ curl -o LICENSE.md https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  6317  100  6317    0     0  18737      0 --:--:-- --:--:-- --:--:-- 18800
+rvlt135@rvlt135:~/development/igor-vanin$ git add LICENSE.md 
+rvlt135@rvlt135:~/development/igor-vanin$ git commit -m "Add LICENSE in main"
+[main d4bad38] Add LICENSE in main
+ Committer: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 LICENSE.md
+rvlt135@rvlt135:~/development/igor-vanin$ git log --max-count=3
+commit d4bad381f826dbbea088b0a1d14ce99145f5fd59 (HEAD -> main)
+Author: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Date:   Tue Mar 12 00:26:59 2024 +0300
+
+    Add LICENSE in main
+
+commit 33bf19e043d85e585de3dd68663d4a6b98809e33 (origin/main, origin/homework-5, origin/HEAD)
+Author: Rvlt135 <41593525+Rvlt135@users.noreply.github.com>
+Date:   Fri Mar 1 16:47:28 2024 +0100
+
+    Update homework5.md
+
+commit 5d5e8c4d0cd8d518c40eecb4d72f4cf34134ea26 (homework-5)
+Author: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Date:   Fri Mar 1 18:38:51 2024 +0300
+
+    add 2
+```
+15. Сделать merge ветки support в ветку main и решить конфликты путем выбора содержимого только одной лицензии.
+```
+rvlt135@rvlt135:~/development/igor-vanin$ git add LICENSE.md 
+rvlt135@rvlt135:~/development/igor-vanin$ git merge support
+fatal: You have not concluded your merge (MERGE_HEAD exists).
+Please, commit your changes before you merge.
+rvlt135@rvlt135:~/development/igor-vanin$ git commit -m "fix conflicts"
+[main 7de976a] fix conflicts
+ Committer: rvlt135 <rvlt135@rvlt135.fvds.ru>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+rvlt135@rvlt135:~/development/igor-vanin$ git merge support
+Already up to date.
+```
+
+16. Переключиться на ветку develop и сделать rebase относительно ветки main.
+17. Вывести историю последних 10 коммитов в виде графа с помощью команды git log -10 --oneline --graph.
+```
+rvlt135@rvlt135:~/development/igor-vanin$ git rebase main
+Current branch develop is up to date.
+rvlt135@rvlt135:~/development/igor-vanin$ git log -10 --oneline --graph
+* fa919e4 (HEAD -> develop) Add README.md
+* a767b18 (main) delete README.md
+* d3bf232 Add README.md
+*   7de976a fix conflicts
+|\  
+| * daaafaa (support) add LICENSE.md
+| * 55634cd (origin/homework-8, homework-8) change homework8
+| *   9b5f5e2 add homework8
+| |\  
+| | * cbc6165 homework 8
+| * | ab04850 add validate-shell.yaml
+| * | c846820 add homework-8
+```
+18. Запушить ветку develop. В истории коммитов должен быть мерж support -> main.
+```
+rvlt135@rvlt135:~/development/igor-vanin$ git push origin develop
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (14/14), 7.64 KiB | 7.64 MiB/s, done.
+Total 14 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), done.
+remote: 
+remote: Create a pull request for 'develop' on GitHub by visiting:
+remote:      https://github.com/tms-dos21-onl/igor-vanin/pull/new/develop
+remote: 
+To github.com:tms-dos21-onl/igor-vanin.git
+ * [new branch]      develop -> develop
+rvlt135@rvlt135:~/development/igor-vanin$ git log -10 --oneline --graph
+* fa919e4 (HEAD -> develop, origin/develop) Add README.md
+* a767b18 (main) delete README.md
+* d3bf232 Add README.md
+*   7de976a fix conflicts
+|\  
+| * daaafaa (support) add LICENSE.md
+| * 55634cd (origin/homework-8, homework-8) change homework8
+| *   9b5f5e2 add homework8
+| |\  
+| | * cbc6165 homework 8
+| * | ab04850 add validate-shell.yaml
+| * | c846820 add homework-8
+
+```
