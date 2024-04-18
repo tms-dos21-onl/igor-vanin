@@ -1,0 +1,87 @@
+- name: Deploy LAMP Stack
+  hosts: server1
+  become: true
+
+  tasks:
+  - name: Install Package
+    ansible.builtin.apt:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - apache2
+      - mysql-server
+      - php
+      - libapache2-mod-php
+      - php-mysql
+      - python3-pymysql
+      - php-memcached
+
+  - name: Download app package
+    ansible.builtin.get_url:
+      url: https://github.com/qyjohn/simple-lamp/archive/refs/heads/master.zip
+      dest: /tmp/simple-lamp.zips
+
+  - name: Extract app package
+    ansible.builtin.unarchive:
+      src: /tmp/simple-lamp.zip
+      remote_src: true
+      dest: /tmp
+
+  - name: Copy app package to www
+    ansible.builtin.copy:
+      src: /tmp/simple-lamp-master/
+      dest: "/var/www/{{ site_name }}"
+      owner: www-data
+      group: www-data
+      remote_src: true
+
+  - name: Install MariaDB
+    ansible.builtin.apt:
+      name: mariadb-server
+      state: present
+
+  - name: Start MariaDB
+    ansible.builtin.service:
+      name: mysql
+      state: started
+
+  - name: Create database user with all database privileges
+    community.mysql.mysql_user:
+      name: "{{ database_user }}"
+      password: "{{ database_password }}"
+      login_unix_socket: /run/mysqld/mysqld.sock
+      priv: '*.*:ALL'
+      state: present
+
+  - name: Restore SQL database
+    community.mysql.mysql_db:
+      name: "{{ database_name }}"
+      login_user: "{{ database_user }}"
+      login_password: "{{ database_password }}"
+      target: "/var/www/{{ site_name }}/simple_lamp.sql"
+      state: import
+
+  - name: Setup app config
+    ansible.builtin.template:
+      src: templates/config.php.j2
+      dest: "/var/www/{{ site_name }}/config.php"
+
+  - name: Setup Apache site
+    ansible.builtin.template:
+      src: templates/apache.conf.j2
+      dest: "/etc/apache2/sites-available/{{ site_name }}.conf"
+
+  - name: Restart Apache service
+    systemd:
+      name: apache2
+      state: restarted
+
+  - name: Enable Apache site
+    ansible.builtin.command: "a2ensite {{ site_name }}"
+
+  - name: Allow HTTP (port 8080) through UFW
+    ufw:
+      rule: allow
+      port: "{{ site_port }}"
+      proto: tcp
+
