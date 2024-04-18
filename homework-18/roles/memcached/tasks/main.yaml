@@ -1,0 +1,9 @@
+- name: Install memcached
+  ansible.builtin.apt:
+    name: memcached
+    state: latest
+
+- name: Start service memcached
+  systemd:
+    name: memcached
+    state: started

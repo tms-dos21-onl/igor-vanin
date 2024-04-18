@@ -1,0 +1,15 @@
+- name: Create database user with all database privileges
+  community.mysql.mysql_user:
+    name: "{{ database_user }}"
+    password: "{{ database_password }}"
+    login_unix_socket: /run/mysqld/mysqld.sock
+    priv: '*.*:ALL'
+    state: present
+
+- name: Restore SQL database
+  community.mysql.mysql_db:
+    name: "{{ database_name }}"
+    login_user: "{{ database_user }}"
+    login_password: "{{ database_password }}"
+    target: "/var/www/{{ site_name }}/simple_lamp.sql"
+    state: import

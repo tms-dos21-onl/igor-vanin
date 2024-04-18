@@ -1,0 +1,11 @@
+database_name: simple_lamp
+database_user: temp
+database_password: temp
+ansible_user: *
+ansible_port: 2222
+ansible_become_password: *
+
+enable_cache: true
+
+site_name: simple-lamp
+site_port: 8080

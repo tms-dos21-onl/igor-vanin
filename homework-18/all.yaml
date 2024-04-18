@@ -1,0 +1,9 @@
+- name: Deploy LAMP Stack
+  hosts: firstvds
+  become: true
+  roles:
+    - preconfig
+    - apache
+    - mariadb
+    - mysql
+    - memcached
