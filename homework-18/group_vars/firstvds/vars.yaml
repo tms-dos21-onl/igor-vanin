@@ -1,9 +1,9 @@
 database_name: simple_lamp
 database_user: temp
 database_password: temp
-ansible_user: *
+ansible_user: user_ansible
 ansible_port: 2222
-ansible_become_password: *
+ansible_become_password: ansible!123
 
 enable_cache: true
 

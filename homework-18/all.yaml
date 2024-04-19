@@ -1,9 +1,9 @@
 - name: Deploy LAMP Stack
   hosts: firstvds
-  become: true
+  remote_user: "{{ ansible_user }}"
+  become: yes
   roles:
     - preconfig
     - apache
-    - mariadb
     - mysql
     - memcached

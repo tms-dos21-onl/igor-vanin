@@ -1,3 +1,8 @@
+- name: Install Mysql
+  ansible.builtin.apt:
+    name: mysql-server
+    state: present
+
 - name: Create database user with all database privileges
   community.mysql.mysql_user:
     name: "{{ database_user }}"

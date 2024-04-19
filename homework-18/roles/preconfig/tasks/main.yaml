@@ -3,18 +3,16 @@
     name: "{{ item }}"
     state: latest
   with_items:
-#    - apache2
-    - mysql-server
     - php
     - libapache2-mod-php
     - php-mysql
     - python3-pymysql
-#    - php-memcached
+    - php-memcached
 
 - name: Download app package
   ansible.builtin.get_url:
     url: https://github.com/qyjohn/simple-lamp/archive/refs/heads/master.zip
-    dest: /tmp/simple-lamp.zips
+    dest: /tmp/simple-lamp.zip
 
 - name: Extract app package
   ansible.builtin.unarchive:
