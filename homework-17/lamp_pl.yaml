@@ -35,16 +35,6 @@
       group: www-data
       remote_src: true
 
-  - name: Install MariaDB
-    ansible.builtin.apt:
-      name: mariadb-server
-      state: present
-
-  - name: Start MariaDB
-    ansible.builtin.service:
-      name: mysql
-      state: started
-
   - name: Create database user with all database privileges
     community.mysql.mysql_user:
       name: "{{ database_user }}"
