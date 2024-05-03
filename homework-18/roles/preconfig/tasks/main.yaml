@@ -1,0 +1,21 @@
+- name: Install Packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - php
+    - libapache2-mod-php
+    - php-mysql
+    - python3-pymysql
+    - php-memcached
+
+- name: Download app package
+  ansible.builtin.get_url:
+    url: https://github.com/qyjohn/simple-lamp/archive/refs/heads/master.zip
+    dest: /tmp/simple-lamp.zip
+
+- name: Extract app package
+  ansible.builtin.unarchive:
+    src: /tmp/simple-lamp.zip
+    remote_src: true
+    dest: /tmp
