@@ -10,18 +10,11 @@ services:
       - "80:80"
     depends_on:
       mysql:
-        condition: service_healthy # тоже самое что в command но на уровне сети.
+        condition: service_healthy
     networks:
       - web-app
     volumes:
       - ./simple-lamp/:/var/www/html/
-    environment:
-      DB_HOSTNAME: "mysql"
-      DB_PORT: 3306
-      DB_DATABASE: "simple_lamp"
-      DB_USERNAME: "username"
-      DB_PASSWORD: "password"
-    command: ["bash", "-c", "/usr/local/bin/wait-for-it.sh mysql:3306 -- php -S 0.0.0.0:80 -t /var/www/html/"]
   mysql:
     image: mysql:latest
     restart: always
@@ -31,10 +24,12 @@ services:
       - ./simple-lamp/sql:/var/lib/mysql
       - ./simple-lamp/simple_lamp.sql:/docker-entrypoint-initdb.d/simple-lamp.sql
     environment:
-      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_HOSTNAME: "mysql"
+      MYSQL_PORT: 3306
       MYSQL_DATABASE: "simple_lamp"
       MYSQL_USER: "username"
       MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
     container_name: mysql
     networks:
       - web-app
@@ -56,6 +51,8 @@ services:
         - 11212:11211
     networks:
       - web-app
+    command:
+      - -vv
 
 networks:
   web-app:
