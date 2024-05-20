@@ -15,6 +15,7 @@ services:
       - web-app
     volumes:
       - ./simple-lamp/:/var/www/html/
+    command: ["bash", "-c", "/usr/local/bin/wait-for-it.sh 172.22.0.3:3306 -- php -S 0.0.0.0:80 -t /var/www/html/"]
   mysql:
     image: mysql:latest
     restart: always
